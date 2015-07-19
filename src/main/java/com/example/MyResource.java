@@ -22,7 +22,7 @@ import static com.example.datastore.PostgreSQL.*;
 /**
  * Root resource (exposed at "myresource" path)
  */
-@Path("myresource")
+@Path("movies")
 public class MyResource {
     private static Connection c;
     private static Statement stmt = null;
@@ -110,29 +110,6 @@ public class MyResource {
             return Response.status(200).entity(result).build();
 
     }
-
-    /*public boolean validator(String token) throws SQLException {
-
-        Connection c = getConnection();
-        PreparedStatement statement = c.prepareStatement("select count(*) from movie_user where uid = ?");
-        statement.setString(1, token);
-        ResultSet s = statement.executeQuery();
-
-        statement.close();
-        closeConnection();
-        if (!s.isBeforeFirst() ) {
-            System.out.println("no data");
-            return false;
-        }
-        return true;
-    }*/
-
-
-
-
-
-
-
 
     @POST
     @Path("/post")
