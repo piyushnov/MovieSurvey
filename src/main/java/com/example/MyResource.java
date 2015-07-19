@@ -22,7 +22,7 @@ import static com.example.datastore.PostgreSQL.*;
 /**
  * Root resource (exposed at "myresource" path)
  */
-@Path("movies")
+@Path("MyMovies")
 public class MyResource {
     private static Connection c;
     private static Statement stmt = null;
@@ -55,7 +55,7 @@ public class MyResource {
     }
 
     @GET
-    @Path("/get")
+    @Path("/getUser")
     @Produces(MediaType.APPLICATION_JSON)
     public Track getTrackInJSON() {
 
@@ -84,7 +84,8 @@ public class MyResource {
         System.out.println(" no  of rows " + rows);
         JSONObject output = null;
         JSONObject t =new JSONObject();
-        t.put("Token","Invalid");
+        t.put("Token","Invalid.");
+        t.put("message","Please Signup first before you can use this service.");
         String result=t.toString();
         if (rows != 0) {
 
@@ -112,7 +113,7 @@ public class MyResource {
     }
 
     @POST
-    @Path("/post")
+    @Path("/search_movie")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public UserId createTrackInJSON(Track track) throws SQLException, JSONException {
